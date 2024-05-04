@@ -178,6 +178,7 @@ button {
 .custom-input-light:hover,
 .custom-input-light:focus {
   border-color: #e5e5e5;
+  background: transparent !important;
 }
 
 .custom-input::placeholder {
