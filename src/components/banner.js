@@ -25,8 +25,8 @@ const Banner = ({ theme, isMobile }) => {
               : LogoLightLarge
           }
           style={{ width: "100%" }}
-          width={isMobile ? 306 : 1300}
-          height={isMobile ? 306 : 190}
+          width={isMobile ? 206 : 1300}
+          height={isMobile ? 206 : 190}
         />
         <div className="input-wrapper">
           <h3 className={`input-label text-${theme}`}>

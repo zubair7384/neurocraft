@@ -248,11 +248,26 @@ button {
   }
 }
 @media only screen and (max-width: 500px) {
+  .header {
+    height: 90px;
+  }
+  .banner-text {
+    margin-top: 1rem;
+  }
+  .banner-logo {
+    margin-top: 2rem;
+  }
+  .banner {
+    padding-top: 0;
+  }
   .banner-text {
     width: 100%;
     font-size: 20px;
     line-height: 25px;
     margin-top: 2rem;
+  }
+  .input-wrapper {
+    padding: 2rem 0;
   }
   .input-label {
     font-size: 14px;
