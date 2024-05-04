@@ -18,7 +18,7 @@ const Header = ({ theme, toggleTheme, isMobile }) => {
         />
         <Image
           src={theme === "dark" ? Logo : LogoNight}
-          width={isMobile ? 222 : 357}
+          width={isMobile ? 222 : 300}
           height={isMobile ? 27 : 44}
         />
       </div>
