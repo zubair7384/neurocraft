@@ -6,6 +6,22 @@ import MobileDark from "../../public/mobile-dark.svg";
 import Image from "next/image";
 
 const Banner = ({ theme, isMobile }) => {
+  const [email, setEmail] = React.useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // POST request to our API route
+    const response = await fetch("/api/subscribe", {
+      method: "POST",
+      body: JSON.stringify({ email }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    alert(data.message);
+  };
+
   return (
     <div className="container">
       <div className="banner">
@@ -33,15 +49,22 @@ const Banner = ({ theme, isMobile }) => {
             Register now to unlock exclusive content and gain early access at
             launch.
           </h3>
-          <input
-            type="text"
-            class={`custom-input custom-input-${theme}`}
-            placeholder="type email here"
-          />
+          <form onSubmit={handleSubmit}>
+            <input
+              class={`custom-input custom-input-${theme}`}
+              placeholder="type email here"
+              type="email"
+              id="email"
+              name="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-          <button className={`submit-button submit-button-${theme}`}>
-            SUBMIT
-          </button>
+            <button className={`submit-button submit-button-${theme}`}>
+              SUBMIT
+            </button>
+          </form>
         </div>
       </div>
     </div>

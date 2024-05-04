@@ -141,7 +141,7 @@ button {
 }
 
 .banner-logo {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .input-wrapper {
@@ -165,6 +165,7 @@ button {
 .custom-input-light {
   border-bottom: 1px solid rgba(166, 166, 166, 1);
   background-color: #000;
+  color: #fff;
 }
 .custom-input-dark {
   border-bottom: 1px solid rgba(166, 166, 166, 1);
