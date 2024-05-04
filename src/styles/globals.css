@@ -201,6 +201,7 @@ button {
 .submit-button {
   padding: 15px 40px;
   border-radius: 50px;
+  color: #000;
   background-color: #ff3600;
   font-size: 16px;
 }
