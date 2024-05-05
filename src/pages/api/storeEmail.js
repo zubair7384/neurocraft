@@ -1,10 +1,10 @@
-// pages/api/subscribe.js
 import { google } from "googleapis";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const { email } = req.body;
+
       const auth = new google.auth.GoogleAuth({
         credentials: {
           client_email: "waheed.iqbal2030@gmail.com",
@@ -15,10 +15,11 @@ export default async function handler(req, res) {
 
       const sheets = google.sheets({ version: "v4", auth });
       const spreadsheetId = "1VWSRvn6TiTsnWyCfzCZ47tQ94y2ZreYEZx14UvhNA0c";
+      const range = "Sheet1!A:A";
 
-      const response = await sheets.spreadsheets.values.append({
+      const response = sheets.spreadsheets.values.append({
         spreadsheetId,
-        range: "Sheet1!A:A",
+        range,
         valueInputOption: "USER_ENTERED",
         resource: {
           values: [[email]],

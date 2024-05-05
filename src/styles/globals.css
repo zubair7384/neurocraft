@@ -109,6 +109,12 @@ button {
   color: #000;
 }
 
+.text-success-light,
+.text-success-dark {
+  max-width: 77%;
+  color: #ff3600;
+}
+
 /* Clearfix */
 .clearfix::after {
   content: "";

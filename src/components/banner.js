@@ -7,11 +7,11 @@ import Image from "next/image";
 
 const Banner = ({ theme, isMobile }) => {
   const [email, setEmail] = React.useState("");
+  const [success, setSuccess] = React.useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // POST request to our API route
-    const response = await fetch("/api/subscribe", {
+    const response = await fetch("/api/storeEmail", {
       method: "POST",
       body: JSON.stringify({ email }),
       headers: {
@@ -19,7 +19,8 @@ const Banner = ({ theme, isMobile }) => {
       },
     });
     const data = await response.json();
-    alert(data.message);
+    console.log(data, "data");
+    setSuccess(data.message);
   };
 
   return (
@@ -45,26 +46,35 @@ const Banner = ({ theme, isMobile }) => {
           height={isMobile ? 206 : 190}
         />
         <div className="input-wrapper">
-          <h3 className={`input-label text-${theme}`}>
-            Register now to unlock exclusive content and gain early access at
-            launch.
-          </h3>
-          <form onSubmit={handleSubmit}>
-            <input
-              class={`custom-input custom-input-${theme}`}
-              placeholder="type email here"
-              type="email"
-              id="email"
-              name="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          {success ? (
+            <h3 className={`input-label text-success-${theme}`}>
+              Thank you for signing up! Get ready for exclusive content and
+              early access at launch soon!
+            </h3>
+          ) : (
+            <div>
+              <h3 className={`input-label text-${theme}`}>
+                Register now to unlock exclusive content and gain early access
+                at launch.
+              </h3>
+              <form onSubmit={handleSubmit}>
+                <input
+                  class={`custom-input custom-input-${theme}`}
+                  placeholder="type email here"
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
 
-            <button className={`submit-button submit-button-${theme}`}>
-              SUBMIT
-            </button>
-          </form>
+                <button className={`submit-button submit-button-${theme}`}>
+                  SUBMIT
+                </button>
+              </form>
+            </div>
+          )}
         </div>
       </div>
     </div>
