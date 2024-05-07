@@ -208,11 +208,18 @@ button {
 }
 
 .submit-button {
-  padding: 15px 40px;
+  width: 140px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  /* padding: 15px 40px; */
   border-radius: 50px;
   color: #000;
   background-color: #ff3600;
   font-size: 16px;
+  margin: 0 auto;
 }
 .submit-button-light {
   color: #ff3600;
@@ -241,6 +248,22 @@ button {
 .footer-text-light {
   color: #ff3600;
 }
+.loader {
+  width: 30px;
+  margin-right: 2px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #ff3600 94%, #0000) top/8px 8px
+      no-repeat,
+    conic-gradient(#0000 30%, #ff3600);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: l13 1s infinite linear;
+}
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
 
 @media only screen and (max-width: 1000px) {
   .banner-text {
@@ -255,6 +278,13 @@ button {
   }
   .input-wrapper {
     width: 100%;
+  }
+  .submit-button {
+    width: 110px;
+    height: 40px;
+  }
+  .loader {
+    width: 25px;
   }
 }
 @media only screen and (max-width: 500px) {

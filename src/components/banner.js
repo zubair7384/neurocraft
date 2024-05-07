@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LogoDarkLarge from "../../public/logo-night-large.svg";
 import LogoLightLarge from "../../public/logo-day-large.svg";
 import MobileLight from "../../public/mobile-light.svg";
@@ -6,11 +6,13 @@ import MobileDark from "../../public/mobile-dark.svg";
 import Image from "next/image";
 
 const Banner = ({ theme, isMobile }) => {
-  const [email, setEmail] = React.useState("");
-  const [success, setSuccess] = React.useState("");
+  const [email, setEmail] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const response = await fetch("/api/storeEmail", {
       method: "POST",
       body: JSON.stringify({ email }),
@@ -21,6 +23,7 @@ const Banner = ({ theme, isMobile }) => {
     const data = await response.json();
     console.log(data, "data");
     setSuccess(data.message);
+    setLoading(false);
   };
 
   return (
@@ -59,7 +62,7 @@ const Banner = ({ theme, isMobile }) => {
               </h3>
               <form onSubmit={handleSubmit}>
                 <input
-                  class={`custom-input custom-input-${theme}`}
+                  className={`custom-input custom-input-${theme}`}
                   placeholder="type email here"
                   type="email"
                   id="email"
@@ -68,9 +71,11 @@ const Banner = ({ theme, isMobile }) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-
-                <button className={`submit-button submit-button-${theme}`}>
-                  SUBMIT
+                <button
+                  className={`submit-button submit-button-${theme}`}
+                  disabled={loading}
+                >
+                  {loading && <div className="loader"></div>} SUBMIT
                 </button>
               </form>
             </div>
